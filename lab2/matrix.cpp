@@ -9,7 +9,7 @@ std::vector<std::vector<complex>>& Matrix::get_matrix(){
 }
 
 void Matrix::user_matrix() {
-    std::cout << "Enter elements of matrix. It must me higher than -10 and lower than 10" << "\n";
+    std::cout << "Enter elements of matrix. (First number for real, second - for imaginary)" << "\n";
     std::cout << "First number for row, second for column" << '\n';
     complex element;
     for(int i = 0; i < order; i++) {
