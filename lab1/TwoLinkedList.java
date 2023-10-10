@@ -58,20 +58,6 @@ public class TwoLinkedList<T>{
         }
         return node;
     }
-    T get_element(int index){
-        int k = 0;
-        ListNode node = head;
-        while (node != null){
-            k++;
-            node = node.next;
-            if(index == k) return (T) node.field;
-            else{
-                System.out.println("Индекс находится за границами списка");
-                return null;
-            }
-        }
-        return null;
-    }
 
     ListNode insert(int index, T data){
         ListNode right = get_at(index);
