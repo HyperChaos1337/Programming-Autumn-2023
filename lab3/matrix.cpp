@@ -12,6 +12,7 @@ std::vector<std::vector<rational>>& Matrix::get_matrix(){
     return matrix_array;
 }
 
+/*
 void Matrix::user_matrix() {
     std::cout << "Enter elements of matrix. (First number for real, second - for imaginary)" << "\n";
     std::cout << "First number for row, second for column" << '\n';
@@ -33,7 +34,7 @@ void Matrix::user_matrix() {
         }
     }
 }
-
+*/
 std::ostream& operator<<(std::ostream& out, const Matrix& matrix){
     for(int i = 0; i < matrix.order; i++){
         for(int j = 0; j < matrix.order; j++){
@@ -54,13 +55,26 @@ QString& operator<<(QString& s, Matrix& matrix){
     return s;
 }
 
+void Matrix::init(){
+    for(int i = 0; i < order; ++i){
+        matrix_array.push_back(std::vector<rational>());
+        for(int j = 0; j < order; ++j){
+            rational number;
+            number.set_num(0);
+            number.set_den(1);
+            number.simplify();
+            matrix_array.back().push_back(number);
+        }
+    }
+}
+
 void Matrix::default_matrix() {
     for(int i = 0; i < order; ++i){
         matrix_array.push_back(std::vector<rational>());
         for(int j = 0; j < order; ++j){
             rational number;
-            number.set_num(rand()%5+1);
-            number.set_den(rand()%5+1);
+            number.set_num(1);
+            number.set_den(4);
             number.simplify();
             matrix_array.back().push_back(number);
         }
@@ -80,18 +94,28 @@ bool Matrix::full_of_zeroes(std::vector<std::vector<rational>> &matrix){
 
 }
 
+void Matrix::set_determinant(rational det){
+    this->det = det;
+}
+
 rational Matrix::determinant(){
 
     if(matrix_array.empty()) return TRational(0, 1);
-
+    rational m00 = matrix_array[1][1]*matrix_array[2][2] - matrix_array[1][2]*matrix_array[2][1];
+    rational m01 = matrix_array[1][0]*matrix_array[2][2] - matrix_array[1][2]*matrix_array[2][0];
+    rational m02 = matrix_array[1][0]*matrix_array[2][1] - matrix_array[1][1]*matrix_array[2][0];
+    /*
     det = matrix_array[0][0]*matrix_array[1][1]*matrix_array[2][2]+
           matrix_array[0][1]*matrix_array[1][2]*matrix_array[2][0]+
           matrix_array[0][2]*matrix_array[1][0]*matrix_array[2][1]-
           matrix_array[0][2]*matrix_array[1][1]*matrix_array[2][0]-
           matrix_array[0][0]*matrix_array[1][2]*matrix_array[2][1]-
           matrix_array[0][1]*matrix_array[1][0]*matrix_array[2][2];
+*/
+    det = matrix_array[0][0]*m00 - matrix_array[0][1]*m01 + matrix_array[0][2]*m02;
     det.simplify();
-    det.change_sign(det);
+    det.change_sign();
+
     return det;
 
 }

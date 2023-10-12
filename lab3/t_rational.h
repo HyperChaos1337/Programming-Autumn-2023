@@ -6,13 +6,13 @@
 
 class TRational{
 private:
-    long long num, den;
+    long  num, den;
 public:
     TRational();
     TRational(long long num, long long den);
 
     TRational simplify();
-    TRational change_sign(TRational& rational);
+    TRational change_sign();
     long long gcd(long long a, long long b);
     long long lcm(long long a, long long b);
 

@@ -27,41 +27,39 @@ long long TRational::get_den(){
 
 TRational TRational::simplify(){
 
-    if(den < 0){
-        num = -num;
+    if (den < 0){
         den = -den;
+        num = -num;
     }
-
     auto del = gcd(num, den);
-
     num /= del;
     den /= del;
     return *this;
 
 }
 
-TRational TRational::change_sign(TRational &rational){
-    if (rational.den < 0){
-        rational.den = -rational.den;
-        rational.num = -rational.num;
+TRational TRational::change_sign(){
+    if (den < 0){
+        den = -den;
+        num = -num;
     }
-    return TRational(rational.num, rational.den);
+    return *this;
 }
 
 TRational TRational::operator+(const TRational &rational1){
-    return TRational(num*rational1.den + den*rational1.num, den * rational1.den);
+    return TRational(num*rational1.den + den*rational1.num, den * rational1.den).simplify();
 }
 
 TRational TRational::operator-(const TRational &rational1){
-    return TRational(num*rational1.den - den*rational1.num, den * rational1.den);
+    return TRational(num*rational1.den - den*rational1.num, den * rational1.den).simplify();
 }
 
 TRational TRational::operator*(const TRational &rational1){
-    return TRational(num * rational1.num, den * rational1.den);
+    return TRational(num * rational1.num, den * rational1.den).simplify();
 }
 
 TRational TRational::operator=(const TRational &rational) {
-    return TRational(num = rational.num, den = rational.den);
+    return TRational(num = rational.num, den = rational.den).simplify();
 }
 
 std::istream& operator>>(std::istream& in, TRational& rational){

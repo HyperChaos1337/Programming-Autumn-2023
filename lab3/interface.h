@@ -16,6 +16,7 @@ class TInterface : public QWidget
     Q_OBJECT
     Matrix matrix;
 
+
 public:
     TInterface(QWidget *parent = nullptr);
     void initInputGUI();
@@ -27,11 +28,14 @@ private:
     QLabel *matrix_field, *hint, *determinant, *rank;
     QPushButton *create_button, *show_button, *det_button, *rank_button, *transpose_button;
     QVector<QLineEdit*> lines;
+    std::vector<std::vector<rational>> array;
 
 public slots:
     void showMatrix();
+
     void showDeterminant();
     void showRank();
     void showTranspose();
+    void createMatrix();
 };
 #endif // TINTERFACE_H

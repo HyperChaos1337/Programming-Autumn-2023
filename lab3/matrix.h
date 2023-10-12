@@ -16,6 +16,8 @@ private:
 public:
     Matrix();
     void set_element(int row, int col, TComplex element);
+
+    void init();
     //Матрица по умолчанию
     void default_matrix();
     //Матрица, заданная пользователем
@@ -29,6 +31,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Matrix& matrix);
     friend QString& operator<<(QString& s, Matrix& matrix);
     //Определитель матрицы
+    void set_determinant(rational det);
     rational determinant();
     //Транспонирование матрицы
     std::vector<std::vector<rational>>& transpose();
