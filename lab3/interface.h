@@ -5,7 +5,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QMessageBox>
 #include "matrix.h"
 
 QT_BEGIN_NAMESPACE
@@ -29,7 +28,6 @@ private:
     QLabel *matrix_field, *hint, *determinant, *rank;
     QPushButton *random_button, *create_button, *det_button, *rank_button, *transpose_button;
     QVector<QLineEdit*> lines;
-    QMessageBox messageBox;
 public slots:
     void randomMatrix();
     void createMatrix();
