@@ -10,33 +10,31 @@
 
 class Matrix{
 private:
+
     int order;
     rational det;
     std::vector<std::vector<rational>> matrix_array;
-public:
-    Matrix();
-    void set_element(int row, int col, TComplex element);
 
-    void init();
-    //Матрица по умолчанию
-    void default_matrix();
-    //Матрица, заданная пользователем
-    void user_matrix();
-    //Проверяет, является ли матрица нулевой
+public:
+
+    Matrix();
+
+    void clear_matrix();
+    void random_matrix();
+
     int get_order();
-    bool full_of_zeroes(std::vector<std::vector<rational>>& matrix);
-    //Получение доступа к матрице вне методов класса
-    std::vector<std::vector<rational>>& get_matrix();
-    //Вывод матрицы
-    friend std::ostream& operator<<(std::ostream& out, const Matrix& matrix);
-    friend QString& operator<<(QString& s, Matrix& matrix);
-    //Определитель матрицы
     void set_determinant(rational det);
+
+    bool full_of_zeroes(std::vector<std::vector<rational>>& matrix);
+    std::vector<std::vector<rational>>& get_matrix();
+
+    QString mat_to_str();
+    QString det_to_str();
+
     rational determinant();
-    //Транспонирование матрицы
-    std::vector<std::vector<rational>>& transpose();
-    //Поиск ранга матрицы
-    int rank(std::vector<std::vector<rational>>& matrix);
+    void transpose();
+    int rank();
+
 };
 
 #endif
