@@ -7,10 +7,6 @@ long long TRational::gcd(long long a, long long b){
     return b ? gcd(b, a%b) : a;
 }
 
-long long TRational::lcm(long long a, long long b){
-    return (a*b)/gcd(a,b);
-}
-
 void TRational::set_num(long long num){
     this->num = num;
 }
@@ -46,31 +42,20 @@ TRational TRational::change_sign(){
     return *this;
 }
 
-TRational TRational::operator+(const TRational &rational1){
-    return TRational(num*rational1.den + den*rational1.num, den * rational1.den).simplify();
+TRational TRational::operator+(const TRational &rational){
+    return TRational(num*rational.den + den*rational.num, den * rational.den).simplify();
 }
 
-TRational TRational::operator-(const TRational &rational1){
-    return TRational(num*rational1.den - den*rational1.num, den * rational1.den).simplify();
+TRational TRational::operator-(const TRational &rational){
+    return TRational(num*rational.den - den*rational.num, den * rational.den).simplify();
 }
 
-TRational TRational::operator*(const TRational &rational1){
-    return TRational(num * rational1.num, den * rational1.den).simplify();
+TRational TRational::operator*(const TRational &rational){
+    return TRational(num * rational.num, den * rational.den).simplify();
 }
 
 TRational TRational::operator=(const TRational &rational) {
     return TRational(num = rational.num, den = rational.den).simplify();
-}
-
-std::istream& operator>>(std::istream& in, TRational& rational){
-    return in >> rational.num >> rational.den;
-}
-
-std::ostream& operator<<(std::ostream& out, const TRational& rational){
-    if(rational.num == rational.den) out << rational.den;
-    else if(rational.den == 1) out << rational.num;
-    else out << rational.num << " / " << rational.den;
-    return out;
 }
 
 QString& operator <<(QString& s, TRational& rational){
