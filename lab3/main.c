@@ -1,7 +1,7 @@
-#include "graphics.h"
-#include "conio.h"
-#include "math.h"
-#include "stdio.h"
+#include <graphics.h>
+#include <conio.h>
+#include <math.h>
+#include <stdio.h>
 
 #define width 640
 #define height 480
