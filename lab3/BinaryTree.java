@@ -88,16 +88,16 @@ public class BinaryTree<T extends Comparable<T>>{
         }
     }
 
-    public DynamicArray<T> preorderTraversal(Node<T> node, DynamicArray<T> array){
+    public DynamicArray<T> preorderTraverse(Node<T> node, DynamicArray<T> array){
         if (node == null) return null;
         array.push(node.get_data());
-        preorderTraversal(node.get_leftChild(), array);
-        preorderTraversal(node.get_rightChild(), array);
+        preorderTraverse(node.get_leftChild(), array);
+        preorderTraverse(node.get_rightChild(), array);
         return array;
     }
 
-    public DynamicArray<T> Traverse(){
-        return preorderTraversal(root, new DynamicArray<>());
+    public DynamicArray<T> traverse(){
+        return preorderTraverse(root, new DynamicArray<>());
     }
 
     private int findCloseBrackets(String sequence, int openBrackets){
@@ -172,5 +172,14 @@ public class BinaryTree<T extends Comparable<T>>{
                 .replace("\r", "")
                 .replace("\n", ""));
     }
+
+    public AVL_Tree<T> toAVL() {
+        AVL_Tree<T> avl = new AVL_Tree<>();
+        DynamicArray<T> nodes = traverse();
+        for (int i = 0; i < nodes.size(); i++)
+            avl.insert(nodes.get(i));
+        return avl;
+    }
+
 
 }
