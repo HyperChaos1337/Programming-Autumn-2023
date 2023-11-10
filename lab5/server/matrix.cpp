@@ -1,8 +1,9 @@
 #include "matrix.h"
 
 Matrix::Matrix(){
+    this->order = this->columns;
 }
-Matrix::Matrix(int order){
+Matrix::Matrix(int order):RectangleMatrix(){
     this->order = order;
 }
 
