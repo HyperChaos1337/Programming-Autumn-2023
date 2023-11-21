@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class Test {
     public String getDataFromFile() {
@@ -31,21 +32,9 @@ public class Test {
         System.out.println("2. AVL tree(Cast from Binary Tree)");
         printer.printAvlTree(avlTree.get_root());
 
-        array = avlTree.prefixTraverse();
-        System.out.print("Prefix Traverse Result: ");
-        array.print();
-
-        array = avlTree.infixTraverse();
-        System.out.print("Infix Traverse Result: ");
-        array.print();
-
-        array = avlTree.postfixTraverse();
-        System.out.print("Postfix Traverse Result: ");
-        array.print();
-
-        array = avlTree.bfs(avlTree.get_root());
-        System.out.print("Breadth-First-Search Result: ");
-        array.print();
+        System.out.println();
+        System.out.println("3. AVL tree traversals");
+        avlTree.traversal();
 
     }
 }

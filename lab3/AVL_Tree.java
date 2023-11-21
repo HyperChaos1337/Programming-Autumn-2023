@@ -155,79 +155,69 @@ public class AVL_Tree<T extends Comparable<T>> {
         root = insert_element(data, root);
     }
 
-
-    public DynamicArray<T> prefixSearch(AVL_Node<T> node, DynamicArray<T> array) {
-        if (node == null)
-            return null;
-
+    private void prefixTraversal(AVL_Node<T> node){
+        if(node == null) return;
         MyStack<AVL_Node<T>> stack = new MyStack<>();
         stack.push(node);
-        while (!stack.is_empty()) {
-            AVL_Node<T> n = stack.pop();
-            array.push(n.data);
-            if (n.right != null) stack.push(n.right);
-            if (n.left != null) stack.push(n.left);
+        while(!stack.is_empty()){
+            AVL_Node<T> cur = stack.pop();
+            System.out.print(cur.data + " ");
+            if(cur.right != null) stack.push(cur.right);
+            if(cur.left != null) stack.push(cur.left);
         }
-
-        return array;
     }
-    public DynamicArray<T> prefixTraverse() {
-        return prefixSearch(root, new DynamicArray<>());
-    }
-
-    public DynamicArray<T> infixSearch(AVL_Node<T> node, DynamicArray<T> array) {
-        if (node == null)
-            return null;
-
+    private void infixTraversal(AVL_Node<T> node){
         MyStack<AVL_Node<T>> stack = new MyStack<>();
-        stack.push(node);
-        while (!stack.is_empty()) {
-            AVL_Node<T> n = stack.pop();
-            if(n.right != null) stack.push(n.right);
-            array.push(n.data);
-            if(n.left != null) stack.push(n.left);
+        AVL_Node<T> cur = node;
+        while (!stack.is_empty() || cur != null){
+            while(cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            System.out.print(cur.data + " ");
+            cur = cur.right;
         }
-
-        return array;
     }
-    public DynamicArray<T> infixTraverse() {
-        return infixSearch(root, new DynamicArray<>());
-    }
-
-    public DynamicArray<T> postfixSearch(AVL_Node<T> node, DynamicArray<T> array) {
-        if (node == null)
-            return null;
-
-        MyStack<AVL_Node<T>> stack = new MyStack<>();
-        stack.push(node);
-        while (!stack.is_empty()) {
-            AVL_Node<T> n = stack.pop();
-            if (n.right != null) stack.push(n.right);
-            if (n.left != null) stack.push(n.left);
-            array.push(n.data);
+    private void postfixTraversal(AVL_Node<T> node){
+        MyStack<AVL_Node<T>> stack1 = new MyStack<>();
+        MyStack<AVL_Node<T>> stack2 = new MyStack<>();
+        stack1.push(node);
+        while (!stack1.is_empty()){
+            AVL_Node<T> cur = stack1.pop();
+            stack2.push(cur);
+            if(cur.left != null) stack1.push(cur.left);
+            if(cur.right != null) stack1.push(cur.right);
         }
-
-        return array;
+        while (!stack2.is_empty()) System.out.print(stack2.pop().data + " ");
     }
-
-    public DynamicArray<T> postfixTraverse() {
-        return postfixSearch(root, new DynamicArray<>());
-    }
-
-    public DynamicArray<T> bfs(AVL_Node<T> node) {
-        DynamicArray<T> values = new DynamicArray<>();
-        MyStack<AVL_Node<T>> queue = new MyStack<>();
-        queue.push(node);
-
-        while (queue.size() > 0) {
-            AVL_Node<T> queuedNode = queue.pop();
-            values.push(queuedNode.get_data());
-
-            if (queuedNode.get_left() != null) queue.push(queuedNode.get_left());
-            if (queuedNode.get_right() != null) queue.push(queuedNode.get_right());
+    private void bfsTraversal(AVL_Node<T> root){
+        if(root == null) return;
+        MyQueue<AVL_Node<T>> queue = new MyQueue<>();
+        queue.add(root);
+        while (!queue.is_empty()){
+            AVL_Node<T> cur = queue.poll();
+            System.out.print(cur.data + " ");
+            if(cur.left != null) queue.add(cur.left);
+            if(cur.right != null) queue.add(cur.right);
         }
-
-        return values;
     }
 
+    public void traversal() {
+        System.out.println("Prefix Traversal:");
+        prefixTraversal(root);
+        System.out.println();
+
+        System.out.println("Infix Traversal:");
+        infixTraversal(root);
+        System.out.println();
+
+        System.out.println("Postfix Traversal:");
+        postfixTraversal(root);
+        System.out.println();
+
+        System.out.println("Breadth first search:");
+        bfsTraversal(root);
+        System.out.println();
+    }
 }
