@@ -3,6 +3,10 @@
 RectangleMatrix::RectangleMatrix(){
     this->rows = this->columns = DEFAULT_ORDER;
 }
+RectangleMatrix::RectangleMatrix(int rows, int columns){
+    this->rows = rows;
+    this->columns = columns;
+}
 
 void RectangleMatrix::clear_matrix(){
     for(int i = 0; i < rows; ++i){

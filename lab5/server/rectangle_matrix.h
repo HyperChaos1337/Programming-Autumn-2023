@@ -12,6 +12,7 @@ protected:
     std::vector<std::vector<rational>> matrix_array;
 public:
     RectangleMatrix();
+    RectangleMatrix(int rows, int columns);
     void clear_matrix();
     std::vector<std::vector<rational>>& get_matrix();
     void transpose();
