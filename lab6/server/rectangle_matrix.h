@@ -17,7 +17,6 @@ public:
     RectangleMatrix(int rows, int columns);
     RectangleMatrix(int rows, int columns, std::vector<std::vector<T>>& matrix);
     std::vector<std::vector<T>>& get_matrix();
-    std::vector<std::vector<T>>& create(int rows, int cols);
     void transpose();
     void swapRows(int row1, int row2);
     int rank();
@@ -50,7 +49,6 @@ RectangleMatrix<T>::RectangleMatrix(int rows, int columns){
 }
 
 template <typename T>
-
 RectangleMatrix<T>::RectangleMatrix(int rows, int columns, std::vector<std::vector<T>> &matrix){
     this->rows = rows;
     this->columns = columns;
@@ -62,13 +60,6 @@ RectangleMatrix<T>::RectangleMatrix(int rows, int columns, std::vector<std::vect
         }
     }
     matrix_array = matrix;
-}
-
-template <typename T>
-std::vector<std::vector<T>>& RectangleMatrix<T>::create(int rows, int cols){
-    std::vector<std::vector<T>> matrix;
-    for(int i = 0; i < rows; i++) matrix.push_back(std::vector<T>());
-    return matrix;
 }
 
 template <typename T>

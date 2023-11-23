@@ -79,7 +79,26 @@ void TApplication::recieve(QByteArray msg){
             }
     }
     else{
-
+        std::vector<std::vector<double>> array;
+        Matrix<double> matrix(res[0].toInt(), array);
+        int i = -1, j = 0;
+        int size = matrix.get_order() * matrix.get_order();
+        for (int k = 0; k < size; ++k,j++) {
+            if (k % matrix.get_order() == 0) {
+                i++;
+                j = 0;
+            }
+            matrix.get_matrix()[i][j] = res[k+1].toDouble();
+        }
+        double result = matrix.determinant(matrix.get_matrix());
+        answer += std::to_string(result) + ";";
+        answer += QString::fromStdString(" ") + ";";
+        answer += QString::fromStdString(std::to_string(matrix.rank(matrix.get_matrix()))) + ";";
+        matrix.transpose();
+        for (int i = 0; i < matrix.get_order(); i++)
+            for (int j = 0; j < matrix.get_order(); j++) {
+                answer += std::to_string(matrix.get_matrix()[i][j]) + ";";
+            }
     }
     comm->send(QByteArray().append(answer.toStdString()));
 }

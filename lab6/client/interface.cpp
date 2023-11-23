@@ -58,6 +58,7 @@ void Interface::createMatrix(){
         }
         msg += lines[k]->text() + ";";
     }
+    msg+= std::to_string(ui->comboBox->currentIndex());
     emit request(msg);
 }
 
