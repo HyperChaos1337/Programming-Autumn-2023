@@ -11,7 +11,6 @@ class RectangleMatrix{
 protected:
     int rows, columns;
     std::vector<std::vector<T>> matrix_array;
-    int type;
 public:
     RectangleMatrix();
     RectangleMatrix(int rows, int columns);
@@ -68,7 +67,6 @@ std::vector<std::vector<T>>& RectangleMatrix<T>::get_matrix(){
 }
 
 template <typename T>
-
 void RectangleMatrix<T>::transpose(){
     T **temp = new T *[rows];
     for(int i = 0; i < rows; i++) temp[i] = new T[columns];

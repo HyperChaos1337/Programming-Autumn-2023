@@ -28,7 +28,6 @@ SOURCES += main.cpp \
 HEADERS += \
     application.h \
     matrix.h \
-    number.h \
     rectangle_matrix.h \
     t_complex.h \
     t_rational.h \
