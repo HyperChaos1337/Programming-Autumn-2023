@@ -8,20 +8,14 @@ TInterface::TInterface(QWidget *parent)
     setWindowTitle("Graph Implementation");
     resize(1024, 768);
     ui->fileContent->resize(200, 200);
-    connectButtons();
-
+    connect(ui->openButton, &QPushButton::clicked, this, &TInterface::selectFile);
 }
 
 TInterface::~TInterface(){
     delete ui;
 }
 
-void TInterface::connectButtons(){
-    connect(ui->openButton, &QPushButton::clicked, this, &TInterface::selectFile);
-}
-
 void TInterface::selectFile(){
-
     ui->fileContent->clear();
     if(ui->graphLayout->count() > 0){
         QLayoutItem* item;
@@ -30,7 +24,6 @@ void TInterface::selectFile(){
             delete item;
         }
     }
-
     QString fileName = QFileDialog::getOpenFileName(this, "Choose File", "", "Text files (*.txt)");
     if(fileName.isEmpty()){
         QMessageBox::critical(this, "Error", "File is not selected");
@@ -41,27 +34,20 @@ void TInterface::selectFile(){
         QMessageBox::critical(this, "Error", "Cannot open file. Try again");
         return;
     }
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
+    QTextStream inLine(&file);
+    while (!inLine.atEnd()) {
+        QString line = inLine.readLine();
         if(!isValid(line)){
             QMessageBox::critical(this, "Error", "File contains incorrect data!");
             return;
         }
-        else if(!line.isEmpty()){
-            QStringList vals = line.split(" ");
-            QVector<qint16> row;
-            for (const QString &val : vals) {
-                row.append(val.toInt());
-            }
-            matrix.append(row);
+        QStringList vals = line.split(" ");
+        QVector<qint16> row;
+        for (const QString &val : vals) {
+            row.append(val.toInt());
         }
-        else if(line.isEmpty()){
-            QMessageBox::critical(this, "Error", "File is empty!");
-            return;
-        }
+        matrix.append(row);
     }
-
     QMessageBox::information(this, "Success", "File has been opened!");
     permission = true;
     file.close();
