@@ -1,7 +1,7 @@
 #ifndef TINTERFACE_H
 #define TINTERFACE_H
 
-#include "graph.h"
+#include "graphdrawing.h"
 
 #include <QFile>
 #include <QVector>

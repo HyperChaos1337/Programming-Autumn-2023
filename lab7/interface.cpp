@@ -69,7 +69,7 @@ bool TInterface::isValid(const QString &fileContent){
 
 void TInterface::drawGraph(){
     if(permission){
-        Graph* graph = new Graph(this);
+        GraphDrawing* graph = new GraphDrawing(this);
         graph->setAdjacencyMatrix(matrix);
         ui->graphLayout->addWidget(graph);
         graph->show();
