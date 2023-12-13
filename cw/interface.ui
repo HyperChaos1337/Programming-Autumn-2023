@@ -1316,37 +1316,6 @@ background-color : white;</string>
     <string>4</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="clearButton">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>360</y>
-     <width>91</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Times New Roman</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-   border: 1px solid gray;
-}
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}</string>
-   </property>
-   <property name="text">
-    <string>CLR</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

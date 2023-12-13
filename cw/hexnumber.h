@@ -10,7 +10,7 @@ private:
 public:
     HexNumber(QString value);
     void setValue(QString value);
-    QString getValue() const;
+    const QString& getValue() const;
 };
 
 

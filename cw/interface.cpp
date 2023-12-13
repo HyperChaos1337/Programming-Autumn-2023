@@ -1,6 +1,29 @@
 #include "interface.h"
 #include "ui_interface.h"
 
+QString info = "                                        User Manual                                   \n"
+               "1. Symbols from 0 to 9 and A to F are hexadecimal numbers \n"
+               "2. Symbols +, -, *, / and = are used for math operations  \n"
+               "3. Use key '<<' to clear last symbol                      \n"
+               "4. Use key 'AC' to clear output and log windows           \n"
+               "5. Use keys 'Save' to save your result into storage       \n"
+               "6. Use keys 'Call' to call storage socket as an operand   \n"
+               "7. Stored results are shown in the upper left corner      \n"
+               "                                        Good Luck!                                    \n"
+               "\n"
+               "                                       Руководство                                    \n"
+               "1. Символы от 0 до 9 и от A до F - шестнадцатиричные числа              \n"
+               "2. Символы +, -, *, / и = используются для математических операций      \n"
+               "3. Используйте клавишу '<<' для удаления последнего символа             \n"
+               "4. Используйте клавишу 'AC' для очистки окон логов и вывода             \n"
+               "5. Используйте клавиши 'Save' для сохранения результата в память        \n"
+               "6. Используйте клавиши 'Call' для вызова результата в качестве операнда \n"
+               "7. Сохраненные результаты можно увидеть в верхнем левом углу            \n"
+               "                                         Удачи!                                      \n";
+
+HexCalculator* HexCalculator::hexCalculator = nullptr;
+HexStorage* HexStorage::hexStorage = nullptr;
+
 Interface::Interface(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Interface){
@@ -19,7 +42,6 @@ Interface::~Interface(){
 }
 
 void Interface::connectSignals(){
-
     connect(ui->infoButton, &QPushButton::clicked, this, &Interface::showInfo);
 
     connect(ui->pushButton0, &QPushButton::clicked, this, &Interface::hexDigits);
@@ -58,10 +80,8 @@ void Interface::connectSignals(){
     connect(ui->callButton2, &QPushButton::clicked, this, &Interface::call);
     connect(ui->callButton3, &QPushButton::clicked, this, &Interface::call);
     connect(ui->callButton4, &QPushButton::clicked, this, &Interface::call);
-
 }
 void Interface::blockButtons(bool flag){
-
     ui->plusButton->setDisabled(flag);
     ui->subButton->setDisabled(flag);
     ui->multButton->setDisabled(flag);
@@ -91,79 +111,58 @@ void Interface::blockButtons(bool flag){
     ui->callButton2->setDisabled(flag);
     ui->callButton3->setDisabled(flag);
     ui->callButton4->setDisabled(flag);
-
 }
 void Interface::makeCheckable(){
-
     ui->plusButton->setCheckable(true);
     ui->subButton->setCheckable(true);
     ui->multButton->setCheckable(true);
     ui->divButton->setCheckable(true);
-
 }
 void Interface::setUnblockedSave(bool flag){
-
     ui->saveButton1->setEnabled(flag);
     ui->saveButton2->setEnabled(flag);
     ui->saveButton3->setEnabled(flag);
     ui->saveButton4->setEnabled(flag);
-
 }
 
 void Interface::clrscr(){
-
     blockButtons(false);
     setUnblockedSave(false);
     leftOperand->setValue(nullptr);
     rightOperand->setValue(nullptr);
     ui->result->setText("0");
     ui->logs->setText("");
-
 }
 void Interface::backspace(){
-
     ui->result->setText(ui->result->text().removeLast());
-
     if(ui->result->text().size() == 0)
         ui->result->setText("0");
-
 }
 
 void Interface::hexDigits(){
-
     QPushButton *button = qobject_cast<QPushButton*>(sender());
-
     if(ui->result->text() == '0')
         ui->result->setText("");
-
     ui->result->setText(ui->result->text() + button->text());
-
 }
 void Interface::operation(){
-
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     leftOperand->setValue(ui->result->text());
     ui->logs->setText(leftOperand->getValue());
-
     if(!ui->logs->text().contains(button->text()))
         ui->logs->setText(ui->logs->text() + button->text());
-
     ui->result->setText("");
     button->setChecked(true);
-
 }
 void Interface::result(){
-
     rightOperand->setValue(ui->result->text());
     HexNumber* result = new HexNumber(nullptr);
-
     if(ui->plusButton->isChecked()){
         result->setValue(HexCalculator::get()->add(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
         ui->result->setText(result->getValue());
         ui->plusButton->setChecked(false);
     }
-
     if(ui->subButton->isChecked()){
         result->setValue(HexCalculator::get()->subtract(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
@@ -182,18 +181,14 @@ void Interface::result(){
         ui->result->setText(result->getValue());
         ui->divButton->setChecked(false);
     }
-
     if(!ui->logs->text().contains('='))
         ui->logs->setText(ui->logs->text() + ui->eqButton->text());
-
     blockButtons(true);
-
     if(ui->result->text() == "Cannot divide by Zero" ||
         ui->result->text() == "Underflow" ||
         ui->result->text() == "0") setUnblockedSave(false);
     else setUnblockedSave(true);
     delete result;
-
 }
 
 void Interface::store(){
@@ -226,9 +221,5 @@ void Interface::call(){
 }
 
 void Interface::showInfo(){
-
-    QMessageBox::information(this, "Information",
-                             "Hello there\n"
-                             "It's cold here(");
-
+    QMessageBox::information(this, "Information", info);
 }

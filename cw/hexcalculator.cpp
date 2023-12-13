@@ -1,6 +1,9 @@
 #include "hexcalculator.h"
 
 HexCalculator::HexCalculator(){}
+HexCalculator::~HexCalculator(){
+    hexCalculator = nullptr;
+}
 
 QString HexCalculator::add(const HexNumber &hex1, const HexNumber &hex2){
     bool ok1, ok2;

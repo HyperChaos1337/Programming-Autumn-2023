@@ -8,9 +8,10 @@
 class HexStorage{
 private:
     HexStorage();
+    ~HexStorage();
     static HexStorage *hexStorage;
     QVector<HexNumber> storage;
-    const qint16 M = 4;
+    const short M = 4;
 public:
     static HexStorage* get(){
         if(hexStorage == nullptr)
@@ -18,9 +19,11 @@ public:
         return hexStorage;
     }
 public:
+    HexStorage(const HexStorage&) = delete;
+    void operator = (const HexStorage&) = delete;
     void save(int pos, const HexNumber& number);
     const QVector<HexNumber>& getStorage();
-    QString getAt(int pos);
+    const QString& getAt(int pos);
 };
 
 #endif // HEXSTORAGE_H

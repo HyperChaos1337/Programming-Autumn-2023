@@ -8,6 +8,6 @@ void HexNumber::setValue(QString value){
     this->value = value;
 }
 
-QString HexNumber::getValue() const{
+const QString& HexNumber::getValue() const{
     return value;
 }

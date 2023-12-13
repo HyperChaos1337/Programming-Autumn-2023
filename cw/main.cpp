@@ -2,8 +2,8 @@
 #include <QApplication>
 
 int main(int argc, char *argv[]){
-    QApplication a(argc, argv);
-    Interface w;
-    w.show();
-    return a.exec();
+    QApplication app(argc, argv);
+    Interface interface;
+    interface.show();
+    return app.exec();
 }
