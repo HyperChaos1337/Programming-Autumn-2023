@@ -762,7 +762,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>120</y>
+     <y>180</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -795,9 +795,9 @@ QPushButton:pressed {
   <widget class="QLabel" name="result">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>240</x>
      <y>0</y>
-     <width>691</width>
+     <width>451</width>
      <height>121</height>
     </rect>
    </property>
@@ -821,7 +821,7 @@ background-color : white;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>120</y>
+     <y>180</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -854,9 +854,9 @@ QPushButton:pressed {
   <widget class="QPushButton" name="infoButton">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>420</x>
      <y>360</y>
-     <width>241</width>
+     <width>91</width>
      <height>61</height>
     </rect>
    </property>
@@ -871,15 +871,18 @@ QPushButton:pressed {
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
-   border: 1px solid gray;
+  background-color: rgb(50, 205, 50);
+  color: white; 
+  border: 1px solid gray;
 }
+
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #34C924, stop: 1 #00FF00);
 }</string>
    </property>
    <property name="text">
-    <string>ABOUT PROGRAM</string>
+    <string>HELP</string>
    </property>
   </widget>
   <widget class="QLabel" name="logs">
@@ -912,7 +915,7 @@ background-color : white;</string>
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>180</y>
+     <y>240</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -946,7 +949,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>240</y>
+     <y>300</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -980,7 +983,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>300</y>
+     <y>360</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -1014,7 +1017,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>180</y>
+     <y>240</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -1048,7 +1051,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>240</y>
+     <y>300</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -1082,7 +1085,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>300</y>
+     <y>360</y>
      <width>121</width>
      <height>61</height>
     </rect>
@@ -1110,6 +1113,238 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>CALL 4TH</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="storageValue1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="storageValue2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>90</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="storageValue3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>120</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="storageValue4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="storageLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>241</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignCenter';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string>Storaged Values</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="numLabel1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>21</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="numLabel2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>90</y>
+     <width>21</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="numLabel3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>120</y>
+     <width>21</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="numLabel4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>21</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clearButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>360</y>
+     <width>91</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}</string>
+   </property>
+   <property name="text">
+    <string>CLR</string>
    </property>
   </widget>
  </widget>

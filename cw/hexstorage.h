@@ -14,7 +14,7 @@ private:
 public:
     static HexStorage* get(){
         if(hexStorage == nullptr)
-            hexStorage == new HexStorage;
+            hexStorage = new HexStorage;
         return hexStorage;
     }
 public:

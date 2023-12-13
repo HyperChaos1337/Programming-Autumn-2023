@@ -197,10 +197,32 @@ void Interface::result(){
 }
 
 void Interface::store(){
-
+    QPushButton *button = qobject_cast<QPushButton*>(sender());
+    QString text = button->text().at(button->text().size()-3);
+    HexStorage::get()->save(text.toInt()-1, ui->result->text());
+    switch(text.toInt()-1){
+    case(0):
+        ui->storageValue1->setText(HexStorage::get()->getAt(0));
+        break;
+    case(1):
+        ui->storageValue2->setText(HexStorage::get()->getAt(1));
+        break;
+    case(2):
+        ui->storageValue3->setText(HexStorage::get()->getAt(2));
+        break;
+    case(3):
+        ui->storageValue4->setText(HexStorage::get()->getAt(3));
+        break;
+    default:
+        break;
+    }
 }
 void Interface::call(){
-
+    QPushButton *button = qobject_cast<QPushButton*>(sender());
+    QString text = button->text().at(button->text().size()-3);
+    if(HexStorage::get()->getAt(text.toInt()-1) != nullptr)
+        ui->result->setText(HexStorage::get()->getAt(text.toInt()-1));
+    else QMessageBox::critical(this, "Error", "Value is empty!");
 }
 
 void Interface::showInfo(){
