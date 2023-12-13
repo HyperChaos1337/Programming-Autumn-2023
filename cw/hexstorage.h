@@ -7,12 +7,20 @@
 
 class HexStorage{
 private:
-    const qint16 M = 4;
-    QVector<HexNumber> storage;
-public:
     HexStorage();
-    QString print();
+    static HexStorage *hexStorage;
+    QVector<HexNumber> storage;
+    const qint16 M = 4;
+public:
+    static HexStorage* get(){
+        if(hexStorage == nullptr)
+            hexStorage == new HexStorage;
+        return hexStorage;
+    }
+public:
     void save(int pos, const HexNumber& number);
+    const QVector<HexNumber>& getStorage();
+    QString getAt(int pos);
 };
 
 #endif // HEXSTORAGE_H

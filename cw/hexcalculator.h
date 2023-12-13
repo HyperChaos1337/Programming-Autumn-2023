@@ -4,12 +4,22 @@
 #include "hexnumber.h"
 
 class HexCalculator{
-public:
+private:
     HexCalculator();
-    static QString add(const HexNumber& hex1, const HexNumber& hex2);
-    static QString subtract(const HexNumber& hex1, const HexNumber& hex2);
-    static QString multiply(const HexNumber& hex1, const HexNumber& hex2);
-    static QString divide(const HexNumber& hex1, const HexNumber& hex2);
+    static HexCalculator* hexCalculator;
+public:
+    static HexCalculator* get(){
+        if(hexCalculator == nullptr)
+            hexCalculator == new HexCalculator;
+        return hexCalculator;
+    }
+public:
+    HexCalculator(const HexCalculator&) = delete;
+    void operator = (const HexCalculator&) = delete;
+    QString add(const HexNumber& hex1, const HexNumber& hex2);
+    QString subtract(const HexNumber& hex1, const HexNumber& hex2);
+    QString multiply(const HexNumber& hex1, const HexNumber& hex2);
+    QString divide(const HexNumber& hex1, const HexNumber& hex2);
 };
 
 #endif // HEXCALCULATOR_H

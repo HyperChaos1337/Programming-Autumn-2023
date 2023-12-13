@@ -7,6 +7,9 @@
 #include <QWidget>
 #include <QMessageBox>
 
+inline HexCalculator* HexCalculator::hexCalculator = nullptr;
+inline HexStorage* HexStorage::hexStorage = nullptr;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Interface; }
 QT_END_NAMESPACE
@@ -31,6 +34,9 @@ private slots:
     void hexDigits();
     void operation();
     void result();
+
+    void store();
+    void call();
 
     void showInfo();
 };

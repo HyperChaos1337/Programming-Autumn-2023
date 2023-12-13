@@ -49,6 +49,16 @@ void Interface::connectSignals(){
 
     connect(ui->eqButton, &QPushButton::clicked, this, &Interface::result);
 
+    connect(ui->saveButton1, &QPushButton::clicked, this, &Interface::store);
+    connect(ui->saveButton2, &QPushButton::clicked, this, &Interface::store);
+    connect(ui->saveButton3, &QPushButton::clicked, this, &Interface::store);
+    connect(ui->saveButton4, &QPushButton::clicked, this, &Interface::store);
+
+    connect(ui->callButton1, &QPushButton::clicked, this, &Interface::call);
+    connect(ui->callButton2, &QPushButton::clicked, this, &Interface::call);
+    connect(ui->callButton3, &QPushButton::clicked, this, &Interface::call);
+    connect(ui->callButton4, &QPushButton::clicked, this, &Interface::call);
+
 }
 void Interface::blockButtons(bool flag){
 
@@ -148,25 +158,26 @@ void Interface::result(){
     HexNumber* result = new HexNumber(nullptr);
 
     if(ui->plusButton->isChecked()){
-        result->setValue(HexCalculator::add(*leftOperand, *rightOperand));
+        result->setValue(HexCalculator::get()->add(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
         ui->result->setText(result->getValue());
         ui->plusButton->setChecked(false);
     }
+
     if(ui->subButton->isChecked()){
-        result->setValue(HexCalculator::subtract(*leftOperand, *rightOperand));
+        result->setValue(HexCalculator::get()->subtract(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
         ui->result->setText(result->getValue());
         ui->subButton->setChecked(false);
     }
     if(ui->multButton->isChecked()){
-        result->setValue(HexCalculator::multiply(*leftOperand, *rightOperand));
+        result->setValue(HexCalculator::get()->multiply(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
         ui->result->setText(result->getValue());
         ui->multButton->setChecked(false);
     }
     if(ui->divButton->isChecked()){
-        result->setValue(HexCalculator::divide(*leftOperand, *rightOperand));
+        result->setValue(HexCalculator::get()->divide(*leftOperand, *rightOperand));
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
         ui->result->setText(result->getValue());
         ui->divButton->setChecked(false);
@@ -181,8 +192,14 @@ void Interface::result(){
         ui->result->text() == "Underflow" ||
         ui->result->text() == "0") setUnblockedSave(false);
     else setUnblockedSave(true);
-
     delete result;
+
+}
+
+void Interface::store(){
+
+}
+void Interface::call(){
 
 }
 
