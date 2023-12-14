@@ -1237,7 +1237,7 @@ background-color : white;</string>
 background-color : white;</string>
    </property>
    <property name="text">
-    <string>Storaged Values</string>
+    <string>Extra Values</string>
    </property>
   </widget>
   <widget class="QLabel" name="numLabel1">

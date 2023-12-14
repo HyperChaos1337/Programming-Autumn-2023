@@ -8,7 +8,6 @@
 class HexStorage{
 private:
     HexStorage();
-    ~HexStorage();
     static HexStorage *hexStorage;
     QVector<HexNumber> storage;
     const short M = 4;

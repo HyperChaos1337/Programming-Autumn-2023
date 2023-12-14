@@ -6,7 +6,6 @@
 class HexCalculator{
 private:
     HexCalculator();
-    ~HexCalculator();
     static HexCalculator* hexCalculator;
 public:
     static HexCalculator* get(){
