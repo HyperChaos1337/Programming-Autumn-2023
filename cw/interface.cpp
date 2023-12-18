@@ -132,26 +132,41 @@ void Interface::clrscr(){
     rightOperand->setValue(nullptr);
     ui->result->setText("0");
     ui->logs->setText("");
+    ui->resultDec->setText("0");
+    ui->logsDec->setText("");
 }
 void Interface::backspace(){
     ui->result->setText(ui->result->text().removeLast());
+    ui->resultDec->setText(ui->resultDec->text().removeLast());
+    int decValue = ui->result->text().toInt(nullptr, 16);
     if(ui->result->text().size() == 0)
         ui->result->setText("0");
+    if(decValue == 0)
+        ui->resultDec->setText("0");
 }
 
 void Interface::hexDigits(){
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if(ui->result->text() == '0')
         ui->result->setText("");
+    if(ui->resultDec->text() == '0')
+        ui->resultDec->setText("");
     ui->result->setText(ui->result->text() + button->text());
+    int decValue = ui->result->text().toInt(nullptr, 16);
+    ui->resultDec->setText(QString::number(decValue));
 }
 void Interface::operation(){
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     leftOperand->setValue(ui->result->text());
     ui->logs->setText(leftOperand->getValue());
+    int decValue = leftOperand->getValue().toInt(nullptr, 16);
+    ui->logsDec->setText(QString::number(decValue));
     if(!ui->logs->text().contains(button->text()))
         ui->logs->setText(ui->logs->text() + button->text());
+    if(!ui->logsDec->text().contains(button->text()))
+        ui->logsDec->setText(ui->logsDec->text() + button->text());
     ui->result->setText("");
+    ui->resultDec->setText("");
     button->setChecked(true);
 }
 void Interface::result(){
@@ -159,30 +174,52 @@ void Interface::result(){
     HexNumber* result = new HexNumber(nullptr);
     if(ui->plusButton->isChecked()){
         result->setValue(HexCalculator::get()->add(*leftOperand, *rightOperand));
+        int decResult = result->getValue().toInt(nullptr, 16);
+        int decValue = rightOperand->getValue().toInt(nullptr, 16);
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
+        ui->logsDec->setText(ui->logsDec->text() + QString::number(decValue));
         ui->result->setText(result->getValue());
+        ui->resultDec->setText(QString::number(decResult));
         ui->plusButton->setChecked(false);
     }
     if(ui->subButton->isChecked()){
         result->setValue(HexCalculator::get()->subtract(*leftOperand, *rightOperand));
+        int decResult = result->getValue().toInt(nullptr, 16);
+        int decValue = rightOperand->getValue().toInt(nullptr, 16);
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
+        ui->logsDec->setText(ui->logsDec->text() + QString::number(decValue));
         ui->result->setText(result->getValue());
+        if(ui->result->text() != "Underflow")
+            ui->resultDec->setText(QString::number(decResult));
+        else ui->resultDec->setText(ui->result->text());
         ui->subButton->setChecked(false);
     }
     if(ui->multButton->isChecked()){
         result->setValue(HexCalculator::get()->multiply(*leftOperand, *rightOperand));
+        int decResult = result->getValue().toInt(nullptr, 16);
+        int decValue = rightOperand->getValue().toInt(nullptr, 16);
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
+        ui->logsDec->setText(ui->logsDec->text() + QString::number(decValue));
         ui->result->setText(result->getValue());
+        ui->resultDec->setText(QString::number(decResult));
         ui->multButton->setChecked(false);
     }
     if(ui->divButton->isChecked()){
         result->setValue(HexCalculator::get()->divide(*leftOperand, *rightOperand));
+        int decResult = result->getValue().toInt(nullptr, 16);
+        int decValue = rightOperand->getValue().toInt(nullptr, 16);
         ui->logs->setText(ui->logs->text() + rightOperand->getValue());
+        ui->logsDec->setText(ui->logsDec->text() + QString::number(decValue));
         ui->result->setText(result->getValue());
+        if(ui->result->text() != "Cannot divide by Zero")
+            ui->resultDec->setText(QString::number(decResult));
+        else ui->resultDec->setText(ui->result->text());
         ui->divButton->setChecked(false);
     }
     if(!ui->logs->text().contains('='))
         ui->logs->setText(ui->logs->text() + ui->eqButton->text());
+    if(!ui->logsDec->text().contains('='))
+        ui->logsDec->setText(ui->logsDec->text() + ui->eqButton->text());
     blockButtons(true);
     if(ui->result->text() == "Cannot divide by Zero" ||
         ui->result->text() == "Underflow" ||
@@ -215,8 +252,11 @@ void Interface::store(){
 void Interface::call(){
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     QString text = button->text().at(button->text().size()-3);
-    if(HexStorage::get()->getAt(text.toInt()-1) != nullptr)
+    if(HexStorage::get()->getAt(text.toInt()-1) != nullptr){
         ui->result->setText(HexStorage::get()->getAt(text.toInt()-1));
+        int decValue = HexStorage::get()->getAt(text.toInt()-1).toInt(nullptr, 16);
+        ui->resultDec->setText(QString::number(decValue));
+    }
     else QMessageBox::critical(this, "Error", "Value is empty!");
 }
 

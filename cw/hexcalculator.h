@@ -1,6 +1,8 @@
 #ifndef HEXCALCULATOR_H
 #define HEXCALCULATOR_H
 
+#include <limits>
+
 #include "hexnumber.h"
 
 class HexCalculator{

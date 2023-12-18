@@ -22,7 +22,7 @@ QString HexCalculator::multiply(const HexNumber &hex1, const HexNumber &hex2){
 QString HexCalculator::divide(const HexNumber &hex1, const HexNumber &hex2){
     int divisor = hex2.getValue().toInt(nullptr, 16);
     if (divisor != 0) {
-        int result = hex1.getValue().toInt(nullptr, 16) / divisor;
+        int result = hex1.getValue().toUInt(nullptr, 16) / divisor;
         return QString::number(result, 16).toUpper();
     }
     else return "Cannot divide by Zero";

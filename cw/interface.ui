@@ -798,7 +798,7 @@ QPushButton:pressed {
      <x>240</x>
      <y>0</y>
      <width>451</width>
-     <height>121</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -888,10 +888,10 @@ QPushButton:pressed {
   <widget class="QLabel" name="logs">
    <property name="geometry">
     <rect>
-     <x>5</x>
+     <x>245</x>
      <y>0</y>
-     <width>681</width>
-     <height>41</height>
+     <width>441</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -1314,6 +1314,95 @@ background-color : white;</string>
    </property>
    <property name="text">
     <string>4</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="resultDec">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>60</y>
+     <width>451</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>-1</y>
+     <width>51</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>HEX</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>60</y>
+     <width>51</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>DEC</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="logsDec">
+   <property name="geometry">
+    <rect>
+     <x>245</x>
+     <y>60</y>
+     <width>441</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	qproperty-alignment: ' AlignVCenter | AlignRight';
+	border: 1px white;
+}
+background-color : white;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
